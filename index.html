@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flasher</title>
+    <script src="https://kit.fontawesome.com/06b44fd96d.js" crossorigin="anonymous"></script>
+    <style media="screen">
+      body{
+        font-family:"Trebuchet MS", Helvetica, sans-serif;
+        overflow:hidden;
+      }
+      div{
+        padding:10px;
+      }
+      @keyframes blink{
+        0% {
+          opacity:1;
+        }
+        50%{
+          opacity:0.5;
+        }
+        100% {
+          opacity:1;
+        }
+      }
+      #flasher{
+        animation-name: blink;
+        animation-fill-mode: forwards;
+        animation-duration: 1s;
+        animation-iteration-count:infinite;
+        animation-play-state: paused;
+        animation-delay: 0.5s;
+      }
+      #counter{
+        z-index:2;
+      }
+      #flasher, #counter{
+        background-color:transparent;
+        font-size: 100px;
+        position: absolute;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color:black;
+        left:0;
+        top:0;
+      }
+      #topbar{
+        width:100%;
+        position: absolute;
+        display: none;
+        left:0;
+        top:0;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        z-index: 10;
+        background-color: #eee;
+      }
+      .input{
+        padding:10px;
+        background-color:white;
+        border:2px solid gray;
+        outline: none;
+        margin: 10px 0;
+      }
+      .text-input{
+        width:200px;
+      }
+      .num-input{
+        width:50px;
+      }
+      #submit{
+        font-family:"Trebuchet MS", Helvetica, sans-serif;
+        padding: 10px;
+        outline:none;
+        border:none;
+        cursor:pointer;
+        background-color:dodgerblue;
+        transition: 1s ease;
+        font-weight: bold;
+        font-size:20px;
+        margin:auto;
+        text-align:center;
+      }
+      #submit:hover{
+        background-color: #145da6;
+        color:white;
+      }
+      #reload-btn{
+        background-color:#1e90ff;
+        left:0;
+      }
+      #reload-btn:hover{
+        background-color: #116edd;
+      }
+      #term-btn{
+        background-color:#e0972f;
+        right:0;
+        display:none;
+      }
+      #term-btn:hover{
+        background-color: #bd7a1a;
+      }
+      #term-btn, #reload-btn{
+        width:50px;
+        height:50px;
+        position:fixed;
+        bottom:0;
+        z-index:100;
+        border:none;
+        cursor:pointer;
+        border-radius:50%;
+        position:fixed;
+        bottom:0;
+        z-index:100;
+        transition: 1s ease;
+      }
+      .form{
+        margin: 0 auto;
+      }
+      .note{
+        font-weight: none;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body id="body">
+    <div id="form">
+      <label for="seconds">Display <span class="note">(May not consist of only whitespace)</span></label>
+      <input type="text" name="question" id="display" placeholder="Enter the words to display..." class="input text-input" required>
+      <br>
+      <label for="seconds">Number of seconds <span class="note">(May not surpass 1000)</span></label>
+      <input type="number" name="seconds" id="seconds" placeholder="60" maxlength="3" class="input num-input" required>
+      <br>
+      <input type="submit" name="submit" value="Submit" id="submit">
+    </div>
+    <div id="flasher" class="flasher">
+    </div>
+    <div id="counter">
+    </div>
+    <div id="topbar">
+    </div>
+    <button id="term-btn"><i class="fas fa-pause"></i></button>
+    <button id="reload-btn"><i class="fas fa-redo"></i></button>
+    <script src="flasher.js" defer></script>
+  </body>
+</html>
+
