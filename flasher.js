@@ -70,8 +70,8 @@ submit.addEventListener('click', e=>{
         i -= 100;
         if(i < 0){
           counter.innerHTML = "Time's Up";
-          //var audio = new Audio('Pacman-death-sound.mp3');
-          //audio.play();
+          var audio = new Audio('Pacman-death-sound.mp3');
+          audio.play();
           clearInterval(interval);
         }
       }
