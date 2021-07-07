@@ -90,7 +90,7 @@ termBtn.addEventListener('click', e => {
 })
 
 relBtn.addEventListener('click', e => {
-  window.location.href = "file:///Users/Evanebenezer/Desktop/flasher.html"
+  window.location.href = "https://evebej.github.io/Countdown"
 })
 
 window.addEventListener('resize', function(event) {
