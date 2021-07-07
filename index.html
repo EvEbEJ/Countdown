@@ -9,9 +9,6 @@
         font-family:"Trebuchet MS", Helvetica, sans-serif;
         overflow:hidden;
       }
-      div{
-        padding:10px;
-      }
       @keyframes blink{
         0% {
           opacity:1;
@@ -22,6 +19,9 @@
         100% {
           opacity:1;
         }
+      }
+      label{
+        font-size:10px
       }
       #flasher{
         animation-name: blink;
@@ -137,7 +137,7 @@
   <body id="body">
     <div id="form">
       <label for="seconds">Display <span class="note">(May not consist of only whitespace)</span></label>
-      <input type="text" name="question" id="display" placeholder="Enter the words to display..." class="input text-input" required>
+      <input type="text" name="question" id="display" placeholder="Enter the words to display..." class="input text-input">
       <br>
       <label for="seconds">Number of seconds <span class="note">(May not surpass 1000)</span> <span class="req">required</span></label>
       <input type="number" name="seconds" id="seconds" placeholder="60" maxlength="3" class="input num-input" required>
