@@ -18,6 +18,9 @@ console.log(sec_val)
 var active = false;
 var term = true;
 
+var p = (Number(form.clientWidth) * 0.05).toString() + "px";
+form.style.padding = p;
+
 disInput.addEventListener('input', e=>{
   display_val = document.getElementById('display').value;
 })
@@ -27,10 +30,7 @@ sec.addEventListener('input', e=>{
 })
 
 submit.addEventListener('click', e=>{
-  if(display_val.trim()==''){
-    alert("Please make valid display.")
-  }
-  else if(sec_val >= 1000 && sec_val <= 0 | sec_val.trim() == ''){
+  if(sec_val >= 1000 | sec_val <= 0 | sec_val.trim() == ''){
     alert("Please enter a valid number of seconds.")
   }
   else{
@@ -42,9 +42,11 @@ submit.addEventListener('click', e=>{
     flasher.style.display = "flex";
     flasher.style.width = window.innerWidth.toString() + "px";
     flasher.style.height = window.innerHeight.toString() + "px";
-    topbar.style.padding = "20px";
-    topbar.style.display = "block";
-    topbar.innerHTML = "<p>" + display_val + "</p>"
+    if(display_val.trim()!=''){
+      topbar.style.padding = "20px";
+      topbar.style.display = "block";
+      topbar.innerHTML = "<p>" + display_val + "</p>"
+    }
     termBtn.style.display = "block";
     active = true;
     var interval = setInterval(timer, 100);
@@ -70,8 +72,8 @@ submit.addEventListener('click', e=>{
         i -= 100;
         if(i < 0){
           counter.innerHTML = "Time's Up";
-          var audio = new Audio('Pacman-death-sound.mp3');
-          audio.play();
+          //var audio = new Audio('Pacman-death-sound.mp3');
+          //audio.play();
           clearInterval(interval);
         }
       }
@@ -91,7 +93,7 @@ termBtn.addEventListener('click', e => {
 })
 
 relBtn.addEventListener('click', e => {
-  window.location.href = "https://evebej.github.io/Countdown"
+  window.location.href = "file:///Users/Evanebenezer/Desktop/flasher.html"
 })
 
 window.addEventListener('resize', function(event) {
