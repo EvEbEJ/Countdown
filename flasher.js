@@ -30,10 +30,7 @@ sec.addEventListener('input', e=>{
 })
 
 submit.addEventListener('click', e=>{
-  if(sec_val >= 1000 | sec_val <= 0 | sec_val.trim() == ''){
-    alert("Please enter a valid number of seconds.")
-  }
-  else{
+  if(sec_val < 1000 && sec_val > 0 && sec_val.trim() != ''){
     form.style.display = "none";
     window.location.href += "#flasher";
     counter.style.display = "flex";
