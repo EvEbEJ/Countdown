@@ -9,6 +9,9 @@
         font-family:"Trebuchet MS", Helvetica, sans-serif;
         overflow:hidden;
       }
+      label{
+        font-size: 10px;
+      }
       @keyframes blink{
         0% {
           opacity:1;
@@ -19,9 +22,6 @@
         100% {
           opacity:1;
         }
-      }
-      label{
-        font-size:10px
       }
       #flasher{
         animation-name: blink;
@@ -58,19 +58,20 @@
         z-index: 10;
         background-color: #eee;
       }
-      .input{
+      .input, #alarm{
         padding:10px;
         background-color:white;
-        border:2px solid gray;
+        border:none;
         outline: none;
         margin: 10px 0;
       }
       .text-input{
         width:95%;
-        margin:auto;
+        margin-bottom: 10px;
       }
       .num-input{
         width:50px;
+        margin-bottom: 10px;
       }
       #submit{
         font-family:"Trebuchet MS", Helvetica, sans-serif;
@@ -92,14 +93,14 @@
       }
       #reload-btn{
         background-color:#1e90ff;
-        left:5px;
+        left:10px;
       }
       #reload-btn:hover{
         background-color: #116edd;
       }
       #term-btn{
         background-color:#e0972f;
-        right:5px;
+        right:10px;
         display:none;
       }
       #term-btn:hover{
@@ -109,12 +110,15 @@
         width:50px;
         height:50px;
         position:fixed;
-        bottom:5px;
+        bottom:0;
+        z-index:100;
         border:none;
         cursor:pointer;
         border-radius:50%;
+        position:fixed;
+        bottom:10px;
         z-index:100;
-        transition: 0.5s ease;
+        transition: 1s ease;
       }
       .form{
         margin: 0 auto;
@@ -125,23 +129,37 @@
       }
       #form{
         width:400px;
-        height:200px;
+        height:auto;
         margin: auto;
         background-color: #eee;
       }
       .req{
         color:red;
       }
+      #alarm{
+        border:none;
+        width:100%;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body id="body">
     <div id="form">
       <label for="seconds">Display <span class="note">(May not consist of only whitespace)</span></label>
+      <br>
       <input type="text" name="question" id="display" placeholder="Enter the words to display..." class="input text-input">
       <br>
-      <label for="seconds">Number of seconds <span class="note">(May not surpass 1000)</span> <span class="req">*</span></label>
+      <label for="seconds">Number of seconds <span class="note">(May not surpass 1000)</span> <span class="req">required</span></label>
       <br>
       <input type="number" name="seconds" id="seconds" placeholder="60" maxlength="3" class="input num-input" required>
+      <br>
+      <label for="alarm">Select a sound effect.</label>
+      <br>
+      <select id="alarm" name="alarm" required>
+        <option value="Default">Default</option>
+        <option value="Pacman">Pacman</option>
+        <option value="Bell">Bell</option>
+      </select>
       <br>
       <input type="submit" name="submit" value="Submit" id="submit">
     </div>
@@ -156,4 +174,3 @@
     <script src="flasher.js" defer></script>
   </body>
 </html>
-
