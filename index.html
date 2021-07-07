@@ -66,7 +66,8 @@
         margin: 10px 0;
       }
       .text-input{
-        width:200px;
+        width:95%;
+        margin:auto;
       }
       .num-input{
         width:50px;
@@ -81,8 +82,9 @@
         transition: 1s ease;
         font-weight: bold;
         font-size:20px;
-        margin:auto;
+        margin: 10px auto;
         text-align:center;
+        width:100%;
       }
       #submit:hover{
         background-color: #145da6;
@@ -121,6 +123,15 @@
         font-weight: none;
         font-style: italic;
       }
+      #form{
+        width:400px;
+        height:200px;
+        margin: auto;
+        background-color: #eee;
+      }
+      .req{
+        color:red;
+      }
     </style>
   </head>
   <body id="body">
@@ -128,7 +139,7 @@
       <label for="seconds">Display <span class="note">(May not consist of only whitespace)</span></label>
       <input type="text" name="question" id="display" placeholder="Enter the words to display..." class="input text-input" required>
       <br>
-      <label for="seconds">Number of seconds <span class="note">(May not surpass 1000)</span></label>
+      <label for="seconds">Number of seconds <span class="note">(May not surpass 1000)</span> <span class="req">required</span></label>
       <input type="number" name="seconds" id="seconds" placeholder="60" maxlength="3" class="input num-input" required>
       <br>
       <input type="submit" name="submit" value="Submit" id="submit">
