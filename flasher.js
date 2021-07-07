@@ -13,7 +13,7 @@ var sec_val = document.getElementById('seconds').value;
 var termBtn = document.getElementById('term-btn');
 var relBtn = document.getElementById('reload-btn');
 
-console.log(sec_val)
+var alarm = document.getElementById('alarm');
 
 var active = false;
 var term = true;
@@ -30,7 +30,8 @@ sec.addEventListener('input', e=>{
 })
 
 submit.addEventListener('click', e=>{
-  if(sec_val < 1000 && sec_val > 0 && sec_val.trim() != ''){
+  num_sec_val = Number(sec_val)
+  if(num_sec_val < 1000 && num_sec_val > 0 && sec_val.trim() != '' && Number.isInteger(num_sec_val) == true){
     form.style.display = "none";
     window.location.href += "#flasher";
     counter.style.display = "flex";
@@ -47,7 +48,7 @@ submit.addEventListener('click', e=>{
     termBtn.style.display = "block";
     active = true;
     var interval = setInterval(timer, 100);
-    var i = sec_val * 1000;
+    var i = num_sec_val * 1000;
 
     function timer(){
       if(term != false){
@@ -69,12 +70,29 @@ submit.addEventListener('click', e=>{
         i -= 100;
         if(i < 0){
           counter.innerHTML = "Time's Up";
-          //var audio = new Audio('Pacman-death-sound.mp3');
-          //audio.play();
+          console.log(alarm.value);
+          if(alarm.value == 'Default'){
+            console.log("Default selected");
+            //var audio = new Audio('Pacman-death-sound.mp3');
+            //audio.play();
+          }
+          else if(alarm.value == 'Pacman'){
+            console.log("Pacman selected");
+            var audio = new Audio('Pacman-death-sound.mp3');
+            audio.play();
+          }
+          else if(alarm.value == 'Bell'){
+            console.log("Bell selected");
+            //var audio = new Audio('Pacman-death-sound.mp3');
+            //audio.play();
+          }
           clearInterval(interval);
         }
       }
     }
+  }
+  else if(num_sec_val >= 1000 | num_sec_val <= 0 | sec_val.trim() == '' | Number.isInteger(num_sec_val) != true){
+    alert("Please enter a valid number of seconds (an integer larger than 0 & smaller than 1000)")
   }
 })
 
