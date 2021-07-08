@@ -11,26 +11,66 @@ var display_val = document.getElementById('display').value;
 var sec_val = document.getElementById('seconds').value;
 
 var termBtn = document.getElementById('term-btn');
+var resBtn = document.getElementById('restart-btn');
 var relBtn = document.getElementById('reload-btn');
 
 var alarm = document.getElementById('alarm');
 
 var active = false;
 var term = true;
+var restart = false;
 
 var p = (Number(form.clientWidth) * 0.05).toString() + "px";
+
 form.style.padding = p;
 
-disInput.addEventListener('input', e=>{
-  display_val = document.getElementById('display').value;
-})
+function timer(i, interval){
+  if(term != false){
+    var seconds = i/1000
+    if(i % 1000 == 0){
+      counter.innerHTML = seconds;
+      if(seconds > 20){
+        flasher.style.backgroundColor = "lightgreen";
+      }
+      else if(seconds <= 20 && seconds > 10){
+        flasher.style.backgroundColor = "#ffe814";
+      }
+      else{
+        flasher.style.backgroundColor = "#ff6969";
+        flasher.style.animationPlayState = "running";
+      }
+    }
+    console.log(i);
+    if(i < 0){
+      counter.innerHTML = "Time's Up";
+      console.log(alarm.value);
+      if(alarm.value == 'Default'){
+        console.log("Default selected");
+        //var audio = new Audio('Pacman-death-sound.mp3');
+        //audio.play();
+      }
+      else if(alarm.value == 'Pacman'){
+        console.log("Pacman selected");
+        var audio = new Audio('Pacman-death-sound.mp3');
+        audio.play();
+      }
+      else if(alarm.value == 'Bell'){
+        console.log("Bell selected");
+        //var audio = new Audio('Pacman-death-sound.mp3');
+        //audio.play();
+      }
+      clearInterval(interval);
+    }
+    if(restart == true){
+      console.log("Clearing...")
+      clearInterval(interval);
+    }
+  }
+}
 
-sec.addEventListener('input', e=>{
-  sec_val = document.getElementById('seconds').value;
-})
-
-submit.addEventListener('click', e=>{
-  num_sec_val = Number(sec_val)
+function runFlasher(){
+  restart = false;
+  num_sec_val = Number(sec_val);
   if(num_sec_val < 1000 && num_sec_val > 0 && sec_val.trim() != '' && Number.isInteger(num_sec_val) == true){
     form.style.display = "none";
     window.location.href += "#flasher";
@@ -46,54 +86,28 @@ submit.addEventListener('click', e=>{
       topbar.innerHTML = "<p>" + display_val + "</p>"
     }
     termBtn.style.display = "block";
+    resBtn.style.display = "block";
+    resBtn.style.right = ((10 * 2) + Number(termBtn.clientWidth)).toString() + "px";
     active = true;
-    var interval = setInterval(timer, 100);
     var i = num_sec_val * 1000;
-
-    function timer(){
-      if(term != false){
-        var seconds = i/1000
-        if(i % 1000 == 0){
-          counter.innerHTML = seconds;
-          if(seconds > 20){
-            flasher.style.backgroundColor = "lightgreen";
-          }
-          else if(seconds <= 20 && seconds > 10){
-            flasher.style.backgroundColor = "#ffe814";
-          }
-          else{
-            flasher.style.backgroundColor = "#ff6969";
-            flasher.style.animationPlayState = "running";
-          }
-        }
-        console.log(i);
-        i -= 100;
-        if(i < 0){
-          counter.innerHTML = "Time's Up";
-          console.log(alarm.value);
-          if(alarm.value == 'Default'){
-            console.log("Default selected");
-            //var audio = new Audio('Pacman-death-sound.mp3');
-            //audio.play();
-          }
-          else if(alarm.value == 'Pacman'){
-            console.log("Pacman selected");
-            var audio = new Audio('Pacman-death-sound.mp3');
-            audio.play();
-          }
-          else if(alarm.value == 'Bell'){
-            console.log("Bell selected");
-            //var audio = new Audio('Pacman-death-sound.mp3');
-            //audio.play();
-          }
-          clearInterval(interval);
-        }
-      }
-    }
+    var interval = setInterval(function(){timer(i, interval); i-=100;}, 100);
   }
   else if(num_sec_val >= 1000 | num_sec_val <= 0 | sec_val.trim() == '' | Number.isInteger(num_sec_val) != true){
     alert("Please enter a valid number of seconds (an integer larger than 0 & smaller than 1000)")
   }
+
+}
+
+disInput.addEventListener('input', e=>{
+  display_val = document.getElementById('display').value;
+})
+
+sec.addEventListener('input', e=>{
+  sec_val = document.getElementById('seconds').value;
+})
+
+submit.addEventListener('click', e=>{
+  runFlasher();
 })
 
 termBtn.addEventListener('click', e => {
@@ -107,8 +121,14 @@ termBtn.addEventListener('click', e => {
   }
 })
 
+resBtn.addEventListener('click', e => {
+  restart = true;
+  //
+  setTimeout(runFlasher, 1000);
+})
+
 relBtn.addEventListener('click', e => {
-  window.location.href = "https://evebej.github.io/Countdown"
+  window.location.href = "file:///Users/Evanebenezer/Desktop/flasher.html";
 })
 
 window.addEventListener('resize', function(event) {
