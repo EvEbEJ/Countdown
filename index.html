@@ -92,25 +92,22 @@
         color:white;
       }
       #reload-btn{
-        background-color:#1e90ff;
         left:10px;
       }
-      #reload-btn:hover{
-        background-color: #116edd;
+      #reload-btn:hover, #term-btn:hover, #restart-btn:hover{
+        background-color: #000;
       }
       #term-btn{
-        background-color:#e0972f;
         right:10px;
         display:none;
       }
-      #term-btn:hover{
-        background-color: #bd7a1a;
+      #restart-btn{
+        display:none;  
       }
-      #term-btn, #reload-btn{
+      #term-btn, #reload-btn, #restart-btn{
+        background-color:#000000aa;
         width:50px;
         height:50px;
-        position:fixed;
-        bottom:0;
         z-index:100;
         border:none;
         cursor:pointer;
@@ -119,6 +116,7 @@
         bottom:10px;
         z-index:100;
         transition: 1s ease;
+        color:white;
       }
       .form{
         margin: 0 auto;
@@ -171,6 +169,7 @@
     <div id="topbar">
     </div>
     <button id="term-btn"><i class="fas fa-pause"></i></button>
+    <button id="restart-btn"><i class="fas fa-sync"></i></button>
     <button id="reload-btn"><i class="fas fa-redo"></i></button>
     <script src="flasher.js" defer></script>
   </body>
