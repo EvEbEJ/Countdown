@@ -78,6 +78,7 @@ function runFlasher(){
     counter.style.width = window.innerWidth.toString() + "px";
     counter.style.height = window.innerHeight.toString() + "px";
     flasher.style.display = "flex";
+    flasher.style.opacity = "";
     flasher.style.width = window.innerWidth.toString() + "px";
     flasher.style.height = window.innerHeight.toString() + "px";
     if(display_val.trim()!=''){
@@ -124,7 +125,7 @@ termBtn.addEventListener('click', e => {
 resBtn.addEventListener('click', e => {
   restart = true; 
   //
-  setTimeout(function(){if(counter.innerHTML <= 10 | counter.innerHTML == "Time's up"){flasher.style.animationPlayState = "#ff6969";} runFlasher();}, 1000);
+  setTimeout(function(){flasher.style.opacity = 1; runFlasher();}, 1000);
 })
 
 relBtn.addEventListener('click', e => {
