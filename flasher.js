@@ -21,9 +21,18 @@ var active = false;
 var term = true;
 var restart = false;
 
+var percent = 0;
+
 var p = (Number(form.clientWidth) * 0.05).toString() + "px";
 
 form.style.padding = p;
+
+flasher.style.animationName = 'blink';
+flasher.style.animationFillMode = 'forwards';
+flasher.style.animationDuration = '1s';
+flasher.style.animationIterationCount ='infinite';
+flasher.style.animationPlayState = 'paused';
+flasher.style.animationDelay = '0.5s';
 
 function timer(i, interval){
   if(term != false){
@@ -126,7 +135,11 @@ termBtn.addEventListener('click', e => {
 resBtn.addEventListener('click', e => {
   restart = true; 
   //
-  setTimeout(function(){flasher.style.opacity = 1; flasher.style.animationPlayState = "paused"; runFlasher();}, 1000);
+  setTimeout(function(){
+    flasher.style.opacity = 1; 
+    flasher.style.animationPlayState = "paused"; 
+    runFlasher();
+  }, 1000);
 })
 
 relBtn.addEventListener('click', e => {
