@@ -122,7 +122,8 @@ termBtn.addEventListener('click', e => {
 })
 
 resBtn.addEventListener('click', e => {
-  restart = true;
+  restart = true; 
+  flasher.style.animationPlayState = "paused";
   //
   setTimeout(runFlasher, 1000);
 })
