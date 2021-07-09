@@ -126,7 +126,7 @@ termBtn.addEventListener('click', e => {
 resBtn.addEventListener('click', e => {
   restart = true; 
   //
-  setTimeout(function(){flasher.style.opacity = 1; runFlasher();}, 1000);
+  setTimeout(function(){flasher.style.opacity = 1; flasher.style.animationPlayState = "paused"; runFlasher();}, 1000);
 })
 
 relBtn.addEventListener('click', e => {
