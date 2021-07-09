@@ -41,7 +41,7 @@ function timer(i, interval){
       }
     }
     console.log(i);
-    if(i < 0){
+    if(i <= 0){
       counter.innerHTML = "Time's Up";
       console.log(alarm.value);
       if(alarm.value == 'Default'){
