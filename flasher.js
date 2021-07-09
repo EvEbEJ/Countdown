@@ -105,6 +105,7 @@ disInput.addEventListener('input', e=>{
 
 sec.addEventListener('input', e=>{
   sec_val = document.getElementById('seconds').value;
+  num_sec_val = Number(sec_val);
 })
 
 submit.addEventListener('click', e=>{
