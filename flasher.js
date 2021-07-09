@@ -9,6 +9,7 @@ var sec = document.getElementById('seconds');
 var subBtn = document.getElementById('submit');
 var display_val = document.getElementById('display').value;
 var sec_val = document.getElementById('seconds').value;
+var num_sec_val = Number(sec_val);
 
 var termBtn = document.getElementById('term-btn');
 var resBtn = document.getElementById('restart-btn');
@@ -70,7 +71,6 @@ function timer(i, interval){
 
 function runFlasher(){
   restart = false;
-  num_sec_val = Number(sec_val);
   if(num_sec_val < 1000 && num_sec_val > 0 && sec_val.trim() != '' && Number.isInteger(num_sec_val) == true){
     form.style.display = "none";
     //window.location.href += "#flasher";
@@ -124,7 +124,7 @@ termBtn.addEventListener('click', e => {
 resBtn.addEventListener('click', e => {
   restart = true; 
   //
-  setTimeout(function(){flasher.style.animationPlayState = "paused"; runFlasher();}, 1000);
+  setTimeout(function(){if(counter.innerHTML <= 10 | counter.innerHTML == "Time's up"){flasher.style.animationPlayState = "#ff6969";} runFlasher();}, 1000);
 })
 
 relBtn.addEventListener('click', e => {
