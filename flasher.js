@@ -73,7 +73,7 @@ function runFlasher(){
   num_sec_val = Number(sec_val);
   if(num_sec_val < 1000 && num_sec_val > 0 && sec_val.trim() != '' && Number.isInteger(num_sec_val) == true){
     form.style.display = "none";
-    window.location.href += "#flasher";
+    //window.location.href += "#flasher";
     counter.style.display = "flex";
     counter.style.width = window.innerWidth.toString() + "px";
     counter.style.height = window.innerHeight.toString() + "px";
