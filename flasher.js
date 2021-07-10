@@ -27,13 +27,6 @@ var p = (Number(form.clientWidth) * 0.05).toString() + "px";
 
 form.style.padding = p;
 
-flasher.style.animationName = 'blink';
-flasher.style.animationFillMode = 'forwards';
-flasher.style.animationDuration = '1s';
-flasher.style.animationIterationCount ='infinite';
-flasher.style.animationPlayState = 'paused';
-flasher.style.animationDelay = '0.5s';
-
 function timer(i, interval){
   if(term != false){
     var seconds = i/1000
