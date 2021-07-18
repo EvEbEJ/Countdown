@@ -57,10 +57,10 @@ function timer(i, interval){
         var audio = new Audio('Pacman-death-sound.mp3');
         audio.play();
       }
-      else if(alarm.value == 'Bell'){
-        console.log("Bell selected");
-        //var audio = new Audio('Pacman-death-sound.mp3');
-        //audio.play();
+      else if(alarm.value == 'Trombone'){
+        console.log("Trombone selected");
+        var audio = new Audio('Trombone.mp3');
+        audio.play();
       }
       clearInterval(interval);
     }
